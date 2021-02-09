@@ -51,7 +51,7 @@ To make any change,
 ## Usage
   - Run `npm start` on your terminal to open the server automatically on your browser
   - If it doesn't open automatically go to your browser and type the url `http://localhost:3000`
-  - If you prefer to use the production minified JavaScript file run `npm build` to create the dist folder with .js files that can be served on your server.
+  - If you prefer to use the production minified JavaScript file run `npm run build` to create the build folder with the distribution files that can be served on your server.
 
 ## Author
 
