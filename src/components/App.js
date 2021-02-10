@@ -27,14 +27,18 @@ class App extends Component {
         case '-':
         case '÷':
         case 'X':
-          this.setState({
-            total: next,
-            next: null,
-            operation: buttonName,
-          });
+          if (total === null) {
+            this.setState({
+              total: next,
+              next: null,
+              operation: buttonName,
+            });
+          } else {
+            this.setState(calculate({ total, next, operation }, buttonName));
+          }
           break;
         case '%':
-          result = calculate(total, next, operation);
+          result = calculate({ total, next, operation }, buttonName);
           this.setState({
             total: result.total,
             next: result.next,
