@@ -25,9 +25,9 @@ const operate = (numberOne, numberTwo, operation) => {
       result = { total, next: total, operation };
       break;
     case '%':
-      return { total :bigNumberOne, next: bigNumberTwo / 100, operation }
+      return { total: bigNumberOne, next: bigNumberTwo / 100, operation };
     default:
-      result = { total :bigNumberOne, next: bigNumberTwo, operation };
+      result = { total: bigNumberOne, next: bigNumberTwo, operation };
   }
   return result;
 };
