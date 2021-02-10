@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import '../stylesheet/Display.css';
 
-const Display = ({ result }) => <div className="Display">{result}</div>;
+const Display = ({ result }) => <div className="Display">{result == null ? 0 : result}</div>;
 
 Display.defaultProps = {
   result: '0',
