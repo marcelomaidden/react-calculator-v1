@@ -1,4 +1,5 @@
-.Button, .operator {
+.Button,
+.operator {
   display: inline-block;
   width: 200px;
   height: 100px;
