@@ -15,7 +15,6 @@ class App extends Component {
   }
 
   handleClick = buttonName => {
-    let result = '';
     const { total, next, operation } = this.state;
     if (buttonName in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']) {
       this.setState({
@@ -38,12 +37,8 @@ class App extends Component {
           }
           break;
         case '%':
-          result = calculate({ total, next, operation }, buttonName);
-          this.setState({
-            total: result.total,
-            next: result.next,
-            operation: result.operation,
-          });
+        case 'AC':
+          this.setState(calculate({ total, next, operation }, buttonName));
           break;
         default:
           console.log(buttonName);

@@ -8,23 +8,26 @@ const operate = (numberOne, numberTwo, operation) => {
 
   switch (operation) {
     case '÷':
-      total = bigNumberOne.divide(bigNumberTwo);
-      result = { total: total.c[0], next: null, operation };
+      total = bigNumberOne.div(bigNumberTwo).toString();
+      result = { total, next: null, operation };
       break;
     case '-':
-      total = bigNumberOne.minus(bigNumberTwo);
-      result = { total: total.c[0], next: null, operation };
+      total = bigNumberOne.minus(bigNumberTwo).toString();
+      result = { total, next: null, operation };
       break;
     case '+':
-      total = bigNumberOne.plus(bigNumberTwo);
-      result = { total: total.c[0], next: null, operation };
+      total = bigNumberOne.plus(bigNumberTwo).toString();
+      result = { total, next: null, operation };
       break;
     case 'X':
-      total = bigNumberOne.times(bigNumberTwo);
-      result = { total: total.c[0], next: null, operation };
+      total = bigNumberOne.times(bigNumberTwo).toString();
+      result = { total, next: null, operation };
       break;
     case '%':
-      return { total: bigNumberOne, next: bigNumberTwo / 100, operation };
+      if (numberTwo != null) {
+        return { total: bigNumberOne, next: bigNumberTwo / 100, operation };
+      }
+      return { total: bigNumberOne / 100, next: bigNumberTwo, operation };
     default:
       result = { total: bigNumberOne, next: bigNumberTwo, operation };
   }

@@ -7,7 +7,7 @@ const calculate = ({ total, next, operation }, buttonName) => {
     case '%':
       return operate(total, next, buttonName);
     case 'AC':
-      return { total: 0, next: 0, operation };
+      return { total: null, next: null, operation };
     default:
       return operate(total, next, buttonName);
   }
