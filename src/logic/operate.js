@@ -6,8 +6,12 @@ const operate = (numberOne, numberTwo, operation) => {
 
   switch (operation) {
     case '÷':
-      total = Big(numberOne).div(numberTwo).toString();
-      result = { total, next: null, operation };
+      if (numberTwo === '0') {
+        result = { total: 'undefined', next: null, operation };
+      } else {
+        total = Big(numberOne).div(numberTwo).toString();
+        result = { total, next: null, operation };
+      }
       break;
     case '-':
       total = Big(numberOne).minus(numberTwo).toString();

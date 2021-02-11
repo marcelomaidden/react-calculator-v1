@@ -35,7 +35,7 @@ class App extends Component {
         case '÷':
         case 'X':
         case '=':
-          if (total === null) {
+          if (total === null || total === 'undefined') {
             this.setState({
               total: next,
               next: null,
