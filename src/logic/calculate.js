@@ -8,6 +8,8 @@ const calculate = ({ total, next, operation }, buttonName) => {
       return operate(total, next, buttonName);
     case 'AC':
       return { total: null, next: null, operation };
+    case '=':
+      return operate(total, next, operation);
     default:
       return operate(total, next, buttonName);
   }

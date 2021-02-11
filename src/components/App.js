@@ -36,12 +36,18 @@ class App extends Component {
             this.setState(calculate({ total, next, operation }, buttonName));
           }
           break;
-        case '%':
-        case 'AC':
-          this.setState(calculate({ total, next, operation }, buttonName));
+        case '=':
+          if (total === null) {
+            this.setState({
+              total: next,
+              next: null,
+            });
+          } else {
+            this.setState(calculate({ total, next, operation }, buttonName));
+          }
           break;
         default:
-          console.log(buttonName);
+          this.setState(calculate({ total, next, operation }, buttonName));
       }
     }
   }

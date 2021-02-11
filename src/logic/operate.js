@@ -24,6 +24,7 @@ const operate = (numberOne, numberTwo, operation) => {
       result = { total, next: null, operation };
       break;
     case '%':
+      console.log(numberOne, numberTwo);
       if (numberTwo != null) {
         return { total: bigNumberOne, next: bigNumberTwo / 100, operation };
       }
