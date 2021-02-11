@@ -20,7 +20,6 @@ class App extends Component {
       total, next, operation, lastClicked,
     } = this.state;
     const operations = ['+', '-', '÷', 'X', '='];
-    console.log(lastClicked);
     if (buttonName === '.') {
       this.setState({
         next: next == null ? `0${buttonName}` : next + buttonName,
