@@ -22,12 +22,13 @@ const operate = (numberOne, numberTwo, operation) => {
       result = { total, next: null, operation };
       break;
     case '%':
-      if (numberTwo != null) {
-        return { total: Big(numberOne), next: numberTwo / 100, operation };
+      result = Big(numberTwo).div(100).toString();
+      if (numberOne === null) {
+        return { total: result, next: null, operation };
       }
-      return { total: Big(numberOne) / 100, next: numberTwo, operation };
+      return { total: Big(numberOne).toString(), next: result, operation };
     default:
-      result = { total: Big(numberOne), next: numberTwo, operation };
+      result = { total: Big(numberOne).toString(), next: numberTwo, operation };
   }
   return result;
 };
