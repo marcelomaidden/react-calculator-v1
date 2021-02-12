@@ -3,7 +3,6 @@ import Big from 'big.js';
 const operate = (numberOne, numberTwo, operation) => {
   let result = {};
   let total = 0;
-
   switch (operation) {
     case '÷':
       if (numberTwo === '0') {
@@ -30,8 +29,12 @@ const operate = (numberOne, numberTwo, operation) => {
         result = Big(numberTwo).div(100).toString();
         return { total: result, next: null, operation };
       }
-      result = Big(numberOne).div(100).toString();
-      return { total: result, next: null, operation: null };
+      if (numberOne !== null && numberTwo == null) {
+        result = Big(numberOne).div(100).toString();
+        return { total: result, next: null, operation };
+      }
+      result = Big(numberTwo).div(100).toString();
+      return { total: numberOne, next: result, operation };
     default:
       result = { total: Big(numberOne).toString(), next: numberTwo, operation };
   }
