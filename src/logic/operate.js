@@ -1,33 +1,42 @@
 import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
-  const bigNumberOne = Big(numberOne);
-  const bigNumberTwo = Big(numberTwo);
-
   let result = {};
   let total = 0;
-
   switch (operation) {
     case '÷':
-      total = bigNumberOne / bigNumberTwo;
-      result = { total, next: total, operation };
+      if (numberTwo === '0') {
+        result = { total: 'undefined', next: null, operation };
+      } else {
+        total = Big(numberOne).div(numberTwo).toString();
+        result = { total: null, next: total, operation };
+      }
       break;
     case '-':
-      total = bigNumberOne - bigNumberTwo;
-      result = { total, next: total, operation };
+      total = Big(numberOne).minus(numberTwo).toString();
+      result = { total: null, next: total, operation };
       break;
     case '+':
-      total = bigNumberOne + bigNumberTwo;
-      result = { total, next: total, operation };
+      total = Big(numberOne).plus(numberTwo).toString();
+      result = { total: null, next: total, operation };
       break;
     case 'X':
-      total = bigNumberOne * bigNumberTwo;
-      result = { total, next: total, operation };
+      total = Big(numberOne).times(numberTwo).toString();
+      result = { total: null, next: total, operation };
       break;
     case '%':
-      return { total: bigNumberOne, next: bigNumberTwo / 100, operation };
+      if (numberOne === null) {
+        result = Big(numberTwo).div(100).toString();
+        return { total: result, next: null, operation };
+      }
+      if (numberOne !== null && numberTwo == null) {
+        result = Big(numberOne).div(100).toString();
+        return { total: result, next: null, operation };
+      }
+      result = Big(numberTwo).div(100).toString();
+      return { total: numberOne, next: result, operation };
     default:
-      result = { total: bigNumberOne, next: bigNumberTwo, operation };
+      result = { total: Big(numberOne).toString(), next: numberTwo, operation };
   }
   return result;
 };
