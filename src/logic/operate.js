@@ -10,28 +10,28 @@ const operate = (numberOne, numberTwo, operation) => {
         result = { total: 'undefined', next: null, operation };
       } else {
         total = Big(numberOne).div(numberTwo).toString();
-        result = { total, next: null, operation };
+        result = { total: null, next: total, operation };
       }
       break;
     case '-':
       total = Big(numberOne).minus(numberTwo).toString();
-      result = { total, next: null, operation };
+      result = { total: null, next: total, operation };
       break;
     case '+':
       total = Big(numberOne).plus(numberTwo).toString();
-      result = { total, next: null, operation };
+      result = { total: null, next: total, operation };
       break;
     case 'X':
       total = Big(numberOne).times(numberTwo).toString();
-      result = { total, next: null, operation };
+      result = { total: null, next: total, operation };
       break;
     case '%':
       if (numberOne === null) {
         result = Big(numberTwo).div(100).toString();
         return { total: result, next: null, operation };
       }
-      result = Big(numberTwo).div(100).toString();
-      return { total: Big(numberOne).toString(), next: result, operation: null };
+      result = Big(numberOne).div(100).toString();
+      return { total: result, next: null, operation: null };
     default:
       result = { total: Big(numberOne).toString(), next: numberTwo, operation };
   }
