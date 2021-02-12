@@ -26,11 +26,12 @@ const operate = (numberOne, numberTwo, operation) => {
       result = { total, next: null, operation };
       break;
     case '%':
-      result = Big(numberTwo).div(100).toString();
       if (numberOne === null) {
+        result = Big(numberTwo).div(100).toString();
         return { total: result, next: null, operation };
       }
-      return { total: Big(numberOne).toString(), next: result, operation };
+      result = Big(numberTwo).div(100).toString();
+      return { total: Big(numberOne).toString(), next: result, operation: null };
     default:
       result = { total: Big(numberOne).toString(), next: numberTwo, operation };
   }
