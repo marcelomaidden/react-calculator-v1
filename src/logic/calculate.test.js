@@ -15,6 +15,13 @@ describe('Test calculate file', () => {
     expect(result).toEqual({ total: '110', next: null, operation: '+' });
   });
 
+  it('Adds two numbers - negative scenario', () => {
+    const result = calculate({
+      total: '10', next: '100', operation: '+', lastClicked: '0',
+    }, '+');
+    expect(result).not.toEqual({ total: '10', next: null, operation: '+' });
+  });
+
   it('Multiplies two numbers', () => {
     const result = calculate({
       total: '10', next: '100', operation: 'X', lastClicked: '0',

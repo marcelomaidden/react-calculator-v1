@@ -33,6 +33,18 @@ describe('Calculator methods', () => {
     expect(display).toBeInTheDocument();
   });
 
+  it('Adds two numbers - negative scenario', async () => {
+    await userEvent.click(screen.getByText('1'));
+    await userEvent.click(screen.getByText('0'));
+    await userEvent.click(screen.getByText('0'));
+    await userEvent.click(screen.getByText('+'));
+    await userEvent.click(screen.getByText('2'));
+    await userEvent.click(screen.getByText('0'));
+    await userEvent.click(screen.getByText('0'));
+    await userEvent.click(screen.getByText('='));
+    expect(screen.queryByText('30')).toBeNull();
+  });
+
   it('Subtracts two numbers', async () => {
     await userEvent.click(screen.getByText('4'));
     await userEvent.click(screen.getByText('2'));
