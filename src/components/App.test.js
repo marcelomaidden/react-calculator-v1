@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 import regeneratorRuntime from 'regenerator-runtime';
 import App from './App';
 
-describe('Calculator', () => {
+describe('Calculator snapshot', () => {
   it('Renders the Calculator page', () => {
     const calculator = renderer
       .create(<App />)
@@ -16,7 +16,7 @@ describe('Calculator', () => {
   });
 });
 
-describe('Calculator component', () => {
+describe('Calculator methods', () => {
   beforeEach(() => {
     render(<App />);
   });
@@ -33,7 +33,7 @@ describe('Calculator component', () => {
     expect(display).toBeInTheDocument();
   });
 
-  it('Substracts two numbers', async () => {
+  it('Subtracts two numbers', async () => {
     await userEvent.click(screen.getByText('4'));
     await userEvent.click(screen.getByText('2'));
     await userEvent.click(screen.getByText('2'));
