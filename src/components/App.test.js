@@ -1,16 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import regeneratorRuntime from "regenerator-runtime";
+import regeneratorRuntime from 'regenerator-runtime';
 import App from './App';
 
 describe('Calculator', () => {
   it('Renders the Calculator page', () => {
     const calculator = renderer
-    .create(<App />)
-    .toJSON();
+      .create(<App />)
+      .toJSON();
     expect(calculator).toMatchSnapshot();
   });
 });
@@ -18,7 +19,7 @@ describe('Calculator', () => {
 describe('Calculator component', () => {
   beforeEach(() => {
     render(<App />);
-  })
+  });
   it('Adds two numbers', async () => {
     await userEvent.click(screen.getByText('1'));
     await userEvent.click(screen.getByText('0'));
@@ -91,5 +92,5 @@ describe('Calculator component', () => {
     await userEvent.click(screen.getByText('0'));
     await userEvent.click(screen.getByText('AC'));
     expect(screen.queryByText('20')).toBeNull();
-  });  
-})
+  });
+});
