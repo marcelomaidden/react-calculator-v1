@@ -30,7 +30,7 @@ const ButtonPanel = ({ clickHandler }) => {
         <Button clickHandler={handleClick} name="+" operator="operator" />
       </div>
       <div>
-        <Button clickHandler={handleClick} name="0" span2="span2" />
+        <Button clickHandler={handleClick} name="0" wide="span2" />
         <Button clickHandler={handleClick} name="." />
         <Button clickHandler={handleClick} name="=" operator="operator" />
       </div>
